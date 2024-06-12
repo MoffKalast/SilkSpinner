@@ -4,7 +4,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
-An ESP32 powered lab machine for winding silk cocoons. This repository contains the electronics schematic, firmware and 3D printed parts required for full assembly.
+An ESP32 powered lab machine for automatic silk cocoons winding. This repository contains the electronics schematic, firmware and 3D printed parts required for full assembly.
+
+The system was designed to be able to wind single silkworm cocoons onto sample bobbins for separate analisys. The current iteration can monitor and drive two instances at the same time.
 
 | ![App](docs/motor.jpg) | ![App](docs/stand.jpg)  | 
 | ----------- | ----------- |
