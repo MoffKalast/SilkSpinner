@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Machine Dashboard</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="icon" type="image/png" href="16x16.png" sizes="16x16">
+		<link rel="icon" type="image/png" href="32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="96x96.png" sizes="96x96">
+		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="152x152.png">
+
+		<meta name="HandheldFriendly" content="true">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover, user-scalable=no, shrink-to-fit=no">
+
+		<link rel="manifest" href="manifest.json">	
+
+		<script src="round-slider.bundle.js" type="module"></script>
+	</head>
+	<body style="width:100%;height:100%;">
+		<div class="container">
+			<div class="area">
+				<div class="area area2">
+					<img id="spinner_left" class="spinner" src="spinner.svg" alt=""/>
+				</div>
+				<div class="area area2">
+					<div style="width: 100%; height: 100%; text-align: left; padding-left: 50px">
+						<h3 id="l_dist">Distance: 1 m</h3>
+						<h3 id="l_turns">Turns: 0</h3>
+						<hr>
+						<h3 id="l_freq">Frequency: 1 Hz / 120 RPM</h3>
+						<h3 id="l_dir">Direction: Normal</h3>
+						<hr>
+						<h3>Set Direction:</h3>
+						<label class="switch">
+						<input id="l_set_dir" type="checkbox">
+						<span class="slider"></span>
+						</label>
+						<h3 id="l_info_thr">Set Throttle: 0%</h3>
+						<input id="l_set_thr" type="range" min="0" max="100" value="0" class="horizontalslider">
+						<hr>
+						<button id="l_0%" class="stop" type="button">0%</button>
+						<button id="l_100%" class="start" type="button">100%</button>
+					</div>
+				</div>
+			</div>
+			<div class="area">
+				<div class="area area2">
+					<img id="spinner_right" class="spinner" src="spinner.svg" alt=""/>
+				</div>
+				<div class="area area2">
+					<div style="width: 100%; height: 100%; text-align: left; padding-left: 50px">
+						<h3 id="r_dist">Distance: 1 m</h3>
+						<h3 id="r_turns">Turns: 0</h3>
+						<h3 id="r_freq">Frequency: 1 Hz / 120 RPM</h3>
+						<h3 id="r_dir">Direction: Normal</h3>
+						<hr>
+						<h3>Set Direction:</h3>
+						<label class="switch">
+						<input id="r_set_dir" type="checkbox">
+						<span class="slider"></span>
+						</label>
+						<h3 id="r_info_thr">Set Throttle: 0%</h3>
+						<input id="r_set_thr" type="range" min="0" max="100" value="0" class="horizontalslider">
+						<hr>
+						<button id="r_0%" class="stop" type="button">0%</button>
+						<button id="r_100%" class="start" type="button">100%</button>
+					</div>
+				</div>
+			</div>
+			<div class="area3">
+				<div class="area">
+					<div id="groups_left" class="groupscontainer noselect"></div>
+					<round-slider
+						id="l_arm_pos"
+						value="50" 
+						arcLength="160" 
+						startAngle="190"
+						style="
+						--round-slider-linecap: round;
+						--round-slider-path-width: min(1vh, 0.45vw);
+						--round-slider-handle: min(2vh, 0.9vw);
+						--round-slider-handle-color: rgb(255, 255, 255);
+						--round-slider-bar-color: rgba(0, 0, 0, 0);
+						width: min(70vh, 31.5vw);
+						position: absolute;
+						padding-bottom: min(5vh, 2.25vw);
+						"
+					></round-slider>
+					<round-slider
+						id="l_arm_limits"
+						value="50" 
+						arcLength="160" 
+						startAngle="190"
+						low="15"
+						high="85"
+						style="
+						--round-slider-linecap: round;
+						--round-slider-path-width: min(1vh, 0.45vw);
+						--round-slider-low-handle-color: rgb(255, 0, 0);
+						--round-slider-low-bar-color: rgb(177, 0, 0);
+						--round-slider-high-handle-color: rgb(255, 0, 0);
+						--round-slider-high-bar-color: rgb(177, 0, 0);
+						width: min(60vh, 27vw);
+						position: absolute;
+						"
+						class="highlow noselect"
+						outside="true"
+					></round-slider>
+					<img id="arm_left" class="arm noselect" src="arm.svg" alt=""/>
+				</div>
+				<div class="area area2" style="border: 5px solid #6A6C6E;">
+					<div style="width: 100%; height: 100%; ">
+						
+						<div class="tabcontainer">
+							<button id="l_swipe_button" class="tab" onclick="setMode('l_swipe')">Swipe</button>
+							<button id="l_static_button" class="tab" onclick="setMode('l_static')">Static</button>
+							<button id="l_groups_button" class="tab" onclick="setMode('l_groups')">Groups</button>
+						</div>
+
+						<div id="l_swipe" class="tabcontent">
+							<p>Move the guide arm left and right at a constant rate.</p>
+							<hr>
+							<h3 class="l_armpostext">Position: 0 deg</h3>
+							<h3 class="l_armmin">Left Limit: -30 deg</h3>
+							<h3 class="l_armmax">Right Limit: 30 deg</h3>
+							<h3>Set Angular Speed (deg/s)</h3>
+							<input id="l_swipespeed" type="number" id="quantity" name="quantity" min="0" max="50" step="0.05" value="0.2">
+						</div>
+
+						<div id="l_static" style="display:none" class="tabcontent">
+							<p>Leave the guide arm at a preset angle.</p>
+							<h3 class="l_armpostext">Position: 0 deg</h3>
+						</div>
+
+						<div id="l_groups" style="display:none" class="tabcontent">
+							<p>Move the guide arm to fractional positions, then stop.</p>
+							<h3 class="l_armpostext">Position: 0 deg</h3>
+							<h3 class="l_armmin">Left Limit: -30 deg</h3>
+							<h3 class="l_armmax">Right Limit: 30 deg</h3>
+							<h3>Set Group Number (N)</h3>
+							<input id="l_groups_num" type="number" id="quantity" name="quantity" min="2" max="30" step="1" value="4">
+							<h3>Set Length of Segment (m)</h3>
+							<input id="l_group_len" type="number" id="quantity" name="quantity" min="1" max="5000" step="1" value="100">
+						
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="area3">
+				<div class="area">
+					<div id="groups_right" class="groupscontainer noselect"></div>
+					<round-slider
+						id="r_arm_pos"
+						value="50" 
+						arcLength="160" 
+						startAngle="190"
+						style="
+						--round-slider-linecap: round;
+						--round-slider-path-width: min(1vh, 0.45vw);
+						--round-slider-handle: min(2vh, 0.9vw);
+						--round-slider-handle-color: rgb(255, 255, 255);
+						--round-slider-bar-color: rgba(0, 0, 0, 0);
+						width: min(70vh, 31.5vw);
+						position: absolute;
+						padding-bottom: min(5vh, 2.25vw);
+						"
+					></round-slider>
+					<round-slider
+						id="r_arm_limits"
+						value="50" 
+						arcLength="160" 
+						startAngle="190"
+						low="15"
+						high="85"
+						style="
+						--round-slider-linecap: round;
+						--round-slider-path-width: min(1vh, 0.45vw);
+						--round-slider-low-handle-color: rgb(255, 0, 0);
+						--round-slider-low-bar-color: rgb(177, 0, 0);
+						--round-slider-high-handle-color: rgb(255, 0, 0);
+						--round-slider-high-bar-color: rgb(177, 0, 0);
+						width: min(60vh, 27vw);
+						position: absolute;
+						"
+						class="highlow noselect"
+						outside="true"
+					></round-slider>
+					<img id="arm_right" class="arm noselect" src="arm.svg" alt=""/>
+				</div>
+				<div class="area area2" style="border: 5px solid #6A6C6E;">
+					<div style="width: 100%; height: 100%; ">
+						
+						<div class="tabcontainer">
+							<button id="r_swipe_button" class="tab" onclick="setMode('r_swipe')">Swipe</button>
+							<button id="r_static_button" class="tab" onclick="setMode('r_static')">Static</button>
+							<button id="r_groups_button" class="tab" onclick="setMode('r_groups')">Groups</button>
+						</div>
+
+						<div id="r_swipe" class="tabcontent">
+							<p>Move the guide arm left and right at a constant rate.</p>
+							<hr>
+							<h3 class="r_armpostext">Position: 0 deg</h3>
+							<h3 class="r_armmin">Left Limit: -30 deg</h3>
+							<h3 class="r_armmax">Right Limit: 30 deg</h3>
+							<h3>Set Angular Speed (deg/s)</h3>
+							<input id="r_swipespeed" type="number" id="quantity" name="quantity" min="0" max="50" step="0.05" value="0.2">
+						</div>
+
+						<div id="r_static" style="display:none" class="tabcontent">
+							<p>Leave the guide arm at a preset angle.</p>
+							<h3 class="r_armpostext">Position: 0 deg</h3>
+						</div>
+
+						<div id="r_groups" style="display:none" class="tabcontent">
+							<p>Move the guide arm to fractional positions, then stop.</p>
+							<h3 class="r_armpostext">Position: 0 deg</h3>
+							<h3 class="r_armmin">Left Limit: -30 deg</h3>
+							<h3 class="r_armmax">Right Limit: 30 deg</h3>
+							<h3>Set Group Number (N)</h3>
+							<input id="r_groups_num" type="number" id="quantity" name="quantity" min="2" max="30" step="1" value="4">
+							<h3>Set Length of Segment (m)</h3>
+							<input id="r_group_len" type="number" id="quantity" name="quantity" min="1" max="5000" step="1" value="100">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="area" style="grid-template-columns: 1fr;">
+				<div class="ctrlpanel">
+					<button id="l_start" class="panelbutton" type="button">Start</button>
+					<button id="l_zero" class="panelbutton" type="button">Zero Measurements</button>
+					<button id="l_entry" class="panelbutton" type="button" disabled>Add Entry</button>
+				</div>
+			</div>
+			<div class="area"  style="grid-template-columns: 1fr;">
+				<div class="ctrlpanel">
+					<button id="r_start" class="panelbutton" type="button">Start</button>
+					<button id="r_zero" class="panelbutton" type="button" >Zero Measurements</button>
+					<button id="r_entry" class="panelbutton" type="button" disabled>Add Entry</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="l_timer">
+			00:00:00
+		</div>
+
+		<div id="r_timer">
+			00:00:00
+		</div>
+
+		<div id="infotext">
+			Connected.
+		</div>
+
+		<button id="filesbutton" onclick="Modal.open('modal_measurements');" type="button">Measurements</button>
+
+		<div id="modal_measurements" class="modal noselect">
+			<div class="box modal-content noselect">
+				<h1>Measurements</h1>
+				<hr>
+				<div id="tablecontainer" style="height: 70%; overflow-y: scroll; overflow-x: hidden;"></div>
+				<hr>
+				<button id="download" type="button">Download .csv</button>
+			</div>
+		</div>
+
+
+		<script src="modal.js"></script>
+		<script src="main.js"></script>
+		<script src="persistent.js"></script>
+	</body>
+</html>

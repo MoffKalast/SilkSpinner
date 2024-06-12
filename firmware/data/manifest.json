@@ -1,0 +1,11 @@
+{
+  "short_name": "Dashboard",
+  "name": "Machine Dashboard",
+  "description": "Machine Dashboard",
+  "icons": [  ],
+  "start_url": "/index.html",
+  "background_color": "#6A6C6E",
+  "display": "fullscreen",
+  "scope": "/",
+  "theme_color": "#6A6C6E"
+}

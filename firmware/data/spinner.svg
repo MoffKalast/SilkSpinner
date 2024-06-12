@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="500mm"
+   height="500mm"
+   viewBox="0 0 500 500"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   sodipodi:docname="spinner.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.25701069"
+     inkscape:cx="379.36165"
+     inkscape:cy="678.96007"
+     inkscape:window-width="1920"
+     inkscape:window-height="996"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g1042" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g1042">
+      <circle
+         style="fill:#808080;fill-opacity:1;stroke-width:3.99468;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+         id="path905-4"
+         cx="250"
+         cy="250"
+         r="56.051468" />
+      <rect
+         style="fill:#1a1a1a;stroke-width:2.89353;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+         id="rect951"
+         width="40.036762"
+         height="217.65442"
+         x="229.98161"
+         y="260.91913" />
+      <path
+         id="rect1028"
+         style="fill:#1a1a1a;stroke-width:4.19345;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+         d="m 437.94123,118.37675 -217.34333,125.4833 38.54907,-1e-5 0,23.97426 198.81267,-114.78473 z" />
+      <path
+         id="rect1030"
+         style="fill:#1a1a1a;stroke-width:4.19345;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+         d="m 62.058748,118.37676 -20.018417,34.67281 211.283219,121.98429 10e-6,-31.17381 26.0785,0 z" />
+      <circle
+         style="fill:#ffffff;fill-opacity:1;stroke-width:2.64583;stroke-linecap:round;stroke-linejoin:round;paint-order:markers fill stroke"
+         id="path905"
+         cx="250"
+         cy="250"
+         r="37.125" />
+    </g>
+  </g>
+</svg>
