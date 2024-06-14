@@ -32,6 +32,12 @@ The system implements the following functionality:
 
 - an emergency stop push button, which quickly stops all motors
 
+
+
+https://github.com/MoffKalast/SilkSpinner/assets/9977799/55012754-9cc3-48a4-b408-5423bcaef4a0
+
+
+
 ## Circuit Diagram
 
 The system runs in an ESP32-WROOM, specifically a devkit V1 wired to the following components as shown:
