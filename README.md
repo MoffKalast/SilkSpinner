@@ -64,6 +64,8 @@ The system runs in an ESP32-WROOM, specifically a devkit V1 wired to the followi
 
 ![App](docs/diagram.png)
 
+As the bobbin on each side rotates, the magnets mounted on the central hub pass past the hall sensor and act as an encoder with 3 ticks per rotations, which is used to track the total distance. The level shifters convert the 5V hall sensor signals to safe 3.3V levels.
+
 The following BoM of electronic components was used for the second prototype, most parts are interchangable with general equivallents:
 
 | Quantity | Description                    |  Notes                    |
@@ -103,7 +105,8 @@ Other required parts:
 | Quantity | Description                    |  Notes                    |
 |----------|--------------------------------|------------------------------------|
 | 4        | Ball bearing                   | Outer diameter 28mm, inner diameter 12mm               |
-| 4        | M3 screws                   | For the electronics box               |
+| 4        | M3 screws                   | For the electronics box                                  |
+| 6        | Neodynium magnet           | 5mm diameter, 3mm height, as the bobbin encoder   |
 
 ## Cite
 
